@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import { JiraProvider } from "@/components/JiraContex";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -19,6 +20,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <JiraProvider>
     <html lang="en">
       <body
        suppressHydrationWarning={true}
@@ -27,5 +29,6 @@ export default function RootLayout({ children }) {
         {children}
       </body>
     </html>
+    </JiraProvider>
   );
 }

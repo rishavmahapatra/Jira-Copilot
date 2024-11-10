@@ -6,14 +6,18 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { API_URL } from "./config";
 import { useRouter } from 'next/navigation';
+import { animate, motion } from "framer-motion";
+
+import { useJira } from "./JiraContex";
 
 export default function StoryInput() {
   const [loading, setLoading] = useState(false);
-  const [storyId, setStoryId] = useState("");
   const [jiraUrl,setJiraUrl] = useState("");
   const [userId, setUserId] = useState("");
   const [apiToken,setApiToken] = useState("");
   const router = useRouter();
+
+  const { setJiraData } = useJira();
   const handleSubmit = async (e) =>{
     e.preventDefault();
     setLoading(true);
@@ -28,16 +32,25 @@ export default function StoryInput() {
           "jira-url": `${jiraUrl}`,
         },
       });
-      if (!response.ok) {
+
+      const data = await response.json();
+     
+      if (data.status == 400) {
+        console.log("error")
+        alert("Authentication Failed")
         throw new Error(`Error: ${response.status} - ${response.statusText}`);
       }
-      const data = await response.json();
-      console.log("API response data:", data);
+      // console.log("API response data:", data);
+      setJiraData({
+        jiraUrl,
+        userId,
+        apiToken
+      });
       alert("Jira Connected Successfully.");
       
       router.push('/story');
     }
-    catch(err) {
+    catch(err){
       console.error("API fetch error:", err);
     }
     finally{
@@ -46,7 +59,11 @@ export default function StoryInput() {
   }
 
   return (
-    <div>
+    <motion.div
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    transition={{duration:0.5}}
+    >
       
       <Card className="m-5 bg-gradient-to-l w-1/2 mx-auto from-lime-400 to-[#59c277] opacity-95 brightness-95 text-black  shadow-lime-500 shadow-md">
       
@@ -104,7 +121,7 @@ export default function StoryInput() {
              
             ) : (
               <Button
-                className="w-1/2 mt-5 mx-auto animate-shimmer bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-white "
+                className="w-1/2 mt-5 mx-auto "
                 type="submit"
               >
                 SUBMIT
@@ -114,7 +131,7 @@ export default function StoryInput() {
         </CardContent>
       </Card>
       {/* <StoryDesc/> */}
-    </div>
+    </motion.div>
   );
 }
 

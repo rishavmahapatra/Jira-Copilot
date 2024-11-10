@@ -46,14 +46,14 @@ export default function Home() {
           value={prompt} 
           onChange={(e) => setPrompt(e.target.value)} 
           placeholder="Enter prompt"
-          className="w-2/3 h-56 rounded-xl text-center font-semibold bg-blue-200 border p-2 m-10"
+          className="w-2/3 h-56 rounded-xl text-center font-semibold bg-gradient-to-l from-[#a8ff78] to-[#78ffd6] border p-2 m-10"
         />
         <button type="submit" className=" rounded-lg bg-blue-500 text-white p-2 m-4">
           Generate
         </button>
       </form>
       {loading && (<p className='font-bold text-center mx-auto'>Loading</p>)}
-      {response && (<p className='m-10 p-10 border-2 rounded-md'>{response}</p>)}
+      {response && (<p className='m-10 p-10 border-2  bg-gradient-to-l from-[#a8ff78] to-[#78ffd6] rounded-md'>{response}</p>)}
     </div>
   );
 }

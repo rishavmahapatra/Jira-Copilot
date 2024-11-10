@@ -6,11 +6,17 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 
+import { useJira } from "./JiraContex";
+
 export default function PostStoryId({ onStorySubmit }) {
   const [storyId, setStoryId] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [token,setToken] = useState("");
+  
+  const { jiraData } = useJira(); 
+  console.log("Jira URL", jiraData.jiraUrl);
+  console.log("Jira URL", jiraData.apiToken);
+
   const handleInputChange = (e) => {
     setStoryId(e.target.value);
   };
@@ -26,6 +32,9 @@ export default function PostStoryId({ onStorySubmit }) {
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json",
+          "username": `${jiraData.userId}`,
+          "api-token": `${jiraData.apiToken}`,
+          "jira-url": `${jiraData.jiraUrl}`,
         },
         body: JSON.stringify({ story_id: storyId }),
       });
@@ -52,15 +61,6 @@ export default function PostStoryId({ onStorySubmit }) {
       <Card className="m-5 bg-gradient-to-l from-[#a8ff78] to-[#78ffd6]  shadow-lg">
         <CardContent>
           <form onSubmit={handleSubmit} className="mt-6 grid gap-3">
-          <Label htmlFor="token">Jira API Key:</Label>
-            <Input
-              className="border border-black"
-              id="token"
-              type="password"
-              value={token}
-              onChange={(e)=> setToken(e.target.value)}
-              required
-            />
             <Label htmlFor="storyid">Story ID:</Label>
             <Input
               className="border border-black"
