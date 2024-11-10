@@ -4,9 +4,12 @@ import { useState } from 'react';
 export default function Home() {
   const [prompt, setPrompt] = useState('');
   const [response, setResponse] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setResponse()
+    setLoading(true);
     try {
       const res = await fetch('/api/generate', {  // Ensure this matches your actual API route
         method: 'POST',
@@ -14,6 +17,7 @@ export default function Home() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({body: prompt }),
+        
       });
 
       if (!res.ok) {
@@ -25,6 +29,9 @@ export default function Home() {
     } catch (error) {
       console.error('Error:', error);
       setResponse('An error occurred. Please try again.');
+    }
+    finally{
+      setLoading(false);
     }
   };
 
@@ -45,6 +52,7 @@ export default function Home() {
           Generate
         </button>
       </form>
+      {loading && (<p className='font-bold text-center mx-auto'>Loading</p>)}
       {response && (<p className='m-10 p-10 border-2 rounded-md'>{response}</p>)}
     </div>
   );
