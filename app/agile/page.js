@@ -52,7 +52,7 @@ export default function Home() {
           Generate
         </button>
       </form>
-      {loading && (<p className='font-bold text-center mx-auto'>Loading</p>)}
+      {loading && (<p className='font-bold animate-pulse text-center mx-auto'>Loading</p>)}
       {response && (<p className='m-10 p-10 border-2  bg-gradient-to-l from-[#a8ff78] to-[#78ffd6] rounded-md'>{response}</p>)}
     </div>
   );

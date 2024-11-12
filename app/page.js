@@ -1,7 +1,7 @@
 "use client";
-import {React, useState} from "react";
+import { React, useState } from "react";
 import { Spotlight } from "@/components/ui/spotlight";
-import { motion, useAnimate } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   TypewriterEffect,
   TypewriterEffectSmooth,
@@ -12,12 +12,12 @@ import StoryInput from "@/components/StoryInput";
 import { Button } from "@/components/ui/button";
 
 export default function SpotlightPreview() {
-
-  const [start,setStart]= useState(false);
+  const [start, setStart] = useState(false);
 
   const router = useRouter();
-  const text = `Enhance your Agile workflow with intelligent task breakdowns and automated sprint planning. 
-  Seamlessly integrate with your Jira by entering your API token, project key & Jira URL. Instantly generate editable sub-tasks and accurate time estimates for each story, simplifying planning and boosting productivity.`;
+  // const text = `Enhance your Agile workflow with intelligent task breakdowns and automated sprint planning. 
+  // Seamlessly integrate with your Jira by entering your API token, project key & Jira URL. Instantly generate 
+  // editable sub-tasks and accurate time estimates for each story, simplifying planning and boosting productivity.`;
   const words = [
     {
       text: "Effortless Agile Estimation using Gen-AI",
@@ -37,7 +37,6 @@ export default function SpotlightPreview() {
           className=" text-4xl md:text-7xl py-1 font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-lime-400 bg-opacity-50"
         >
           Jira Copilot
-          
         </motion.h1>
         <TypewriterEffectSmooth words={words} />
         <motion.div
@@ -45,13 +44,17 @@ export default function SpotlightPreview() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
         >
-          {start ? (<StoryInput />) :(<YtVideo />)}
-          {!start && (<Button
-            onClick={() => setStart(true)}
-            className="block mx-auto md:w-36 h-12 mt-10 border border-green-700"
-          >
-            Get Started
-          </Button>)}
+          {start && <StoryInput /> 
+          // :  <YtVideo />
+          }
+          {!start && (
+            <Button
+              onClick={() => setStart(true)}
+              className="block mx-auto md:w-36 h-12 mt-10 border border-green-700"
+            >
+              Get Started
+            </Button>
+          )}
         </motion.div>
         {/* <TextGenerateEffect words={text} /> */}
         {/* <motion.button onClick={()=>router.push('/agile')}

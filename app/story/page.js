@@ -7,6 +7,8 @@ import { Spotlight } from "@/components/ui/spotlight";
 import { API_URL } from "@/components/config";
 import Prompt from "@/components/Prompt";
 
+import { motion } from "framer-motion";
+
 export default function App() {
   const [tasks, setTasks] = useState([]);
   const [storyDescription, setStoryDescription] = useState(null);
@@ -32,21 +34,23 @@ export default function App() {
 }
   useEffect(()=>{
     getPrompt()
-
   },[])
+  console.log("task-",tasks);
 
   return (
-    <div className="h-screen w-full bg-black/[0.96] antialiased overflow-hidden">
+    <div className="min-h-screen w-full antialiased overflow-hidden">
+       
       {/* <Spotlight className="-top-40 left-0 md:left-60 md:-top-30" fill="lime" /> */}
-      {/* <h1 className='text-center font-extrabold text-3xl m-5'>Jira Estimator</h1> */}
-      <div className="grid grid-cols-2 gap-3 mt-20">
+      <h1 className="my-5 text-4xl md:text-7xl py-1 font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-lime-400 bg-opacity-50">
+          Jira Copilot</h1>
+      <div className="sm:grid grid-cols-2 gap-3 mt-5">
       <div className="Left Column ">
       <PostStoryId onStorySubmit={handleStorySubmit} />
-      {storyDescription && (<StoryDesc description={storyDescription}/>)}
+      {storyDescription ? (<StoryDesc description={storyDescription}/>) : (<Prompt  prompt={prompt} />)}
       </div>
       <div className="Right Column">
         
-      {tasks.length>0 ? (<TaskList tasks={tasks} storyDescription={storyDescription} storyID={storyID} onUpdateTask={handleUpdateTask} />) : (<Prompt  prompt={prompt} />)}
+      {Array.isArray(tasks) && tasks.length>0 && (<TaskList tasks={tasks} storyDescription={storyDescription} storyID={storyID} onUpdateTask={handleUpdateTask} />) }
       </div>
       </div>
       {/* <h1 className='fixed left-0 right-0 bottom-0 text-center p-1 bg-teal-400 font-bold text-xl'>Made with ❤️ by Rishav</h1> */}

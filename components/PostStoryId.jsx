@@ -15,7 +15,6 @@ export default function PostStoryId({ onStorySubmit }) {
   
   const { jiraData } = useJira(); 
   console.log("Jira URL", jiraData.jiraUrl);
-  console.log("Jira URL", jiraData.apiToken);
 
   const handleInputChange = (e) => {
     setStoryId(e.target.value);

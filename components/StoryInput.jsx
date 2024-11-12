@@ -65,10 +65,10 @@ export default function StoryInput() {
     transition={{duration:0.5}}
     >
       
-      <Card className="m-5 bg-gradient-to-l w-1/2 mx-auto from-lime-400 to-[#59c277] opacity-95 brightness-95 text-black  shadow-lime-500 shadow-md">
+      <Card className="m-5 mx-2 bg-gradient-to-l sm:w-1/2 sm:mx-auto from-lime-400 to-[#59c277] opacity-95 brightness-95 text-black  shadow-lime-500 shadow-md">
       
         <CardContent>
-          <form className="mt-6 flex flex-col gap-3" onSubmit={handleSubmit}>
+          <form className="mt-6  flex flex-col gap-3" onSubmit={handleSubmit}>
             <Label htmlFor="jiraurl">Jira URL :</Label>
             <Input
               className="placeholder:text-gray-700 placeholder:font-mono border border-black"
