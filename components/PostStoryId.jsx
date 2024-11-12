@@ -57,7 +57,7 @@ export default function PostStoryId({ onStorySubmit }) {
 
   return (
     <div>
-      <Card className="m-5 bg-gradient-to-l from-lime-400 to-[#59c277] opacity-95 brightness-95 shadow-lg">
+      <Card className="m-5 bg-gradient-to-l from-lime-400 to-[#59c277] opacity-95 shadow-lg">
         <CardContent>
           <form onSubmit={handleSubmit} className="mt-6 grid gap-3">
             <Label className="text-xl" htmlFor="storyid">Story ID :</Label>
