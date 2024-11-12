@@ -76,7 +76,7 @@ function TaskList({ tasks, onUpdateTask, storyDescription, storyID }) {
     <div className="task-list m-5 rounded-xl border-2 shadow-lg bg-teal-500">
          <ScrollArea className="p-3 h-96 overflow-hidden">
       {tasks.map((task, index) => (
-        <Card key={index} className="m-3 p-3 bg-gradient-to-l from-[#a8ff78] to-[#78ffd6] shadow-lg">
+        <Card key={index} className="m-3 p-3 bg-gradient-to-l from-lime-400 to-[#59c277] opacity-95 brightness-95 shadow-lg">
           <CardContent>
             {editIndex === index ? (
               // Edit Mode

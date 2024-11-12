@@ -10,7 +10,7 @@ import { animate, motion } from "framer-motion";
 
 import { useJira } from "./JiraContex";
 
-export default function StoryInput() {
+export default function JiraAuth() {
   const [loading, setLoading] = useState(false);
   const [jiraUrl,setJiraUrl] = useState("");
   const [userId, setUserId] = useState("");
@@ -101,21 +101,12 @@ export default function StoryInput() {
               onChange={(e) => setApiToken(e.target.value)}
               required
             />
-             {/* <Label htmlFor="storyid">Story ID :</Label>
-            <Input
-              className="border placeholder:text-gray-700 placeholder:font-mono border-black"
-              id="storyid"
-              type="text"
-              placeholder = "Example: XYZ-9"
-              value={storyId}
-              onChange={(e)=>setStoryId(e.target.value)}
-              required
-            /> */}
+            
             {loading ? (
               <div>
               {/* <div className="absolute -bottom-10 left-1/2 loader"> </div> */}
               <p className="animate-pulse text-xl text-black text-center font-bold mt-5 mb-1">
-                Loading Story details and estimates...
+                Conncting to Jira...
               </p>
               </div>
              

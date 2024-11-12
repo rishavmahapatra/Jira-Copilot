@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/typewriter-effect";
 import { useRouter } from "next/navigation";
 import YtVideo from "@/components/YtVideo";
-import StoryInput from "@/components/StoryInput";
+import StoryInput from "@/components/JiraAuth";
 import { Button } from "@/components/ui/button";
 
 export default function SpotlightPreview() {

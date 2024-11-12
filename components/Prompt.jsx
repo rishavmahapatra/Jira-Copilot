@@ -8,8 +8,8 @@ export default function Prompt({prompt}) {
     }
   return (
     <div className=' m-5'>
-        <Button onClick={handleClick} className='block mx-auto border border-green-700 right-0' >Show/Hide Prompt</Button>
-      {display && (<p className='mx-auto m-3 p-3 w-full rounded-xl border-2 shadow-lg bg-gradient-to-l from-[#a8ff78] to-[#78ffd6]'>{prompt}</p>)}
+        <Button onClick={handleClick} className='block mx-auto mt-6 border border-green-700 right-0 x' >Show/Hide Prompt</Button>
+      {display && (<p className='mx-auto m-2 mb-10 p-3 w-full rounded-xl border-2 shadow-lg bg-gradient-to-l from-lime-400 to-[#59c277] opacity-95 brightness-95'>{prompt}</p>)}
     </div>
   )
 }

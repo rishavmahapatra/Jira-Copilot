@@ -27,8 +27,11 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <h1 className='fixed bg-black/[0.96]  left-0 right-0 bottom-0 text-center p-1 text-lime-200 shadow-2xl font-bold text-xl'>Made with ❤️ by Rishav</h1>
+
       </body>
     </html>
     </JiraProvider>
+    
   );
 }

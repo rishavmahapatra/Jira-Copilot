@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription,
 function StoryDesc( {description} ) {
   return (
     <div>
-      <Card className=" m-5 bg-gradient-to-l from-[#a8ff78] to-[#78ffd6] shadow-lg">
+      <Card className=" m-5 bg-gradient-to-l from-lime-400 to-[#59c277] opacity-95 brightness-95 shadow-lg">
       <CardHeader>
         <CardTitle>Story Description:</CardTitle>
       </CardHeader>
