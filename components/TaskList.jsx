@@ -5,14 +5,14 @@ import { Card, CardContent } from "./ui/card";
 import { Label } from "./ui/label";
 import { ScrollArea } from "./ui/scroll-area";
 import { API_URL } from "./config";
-
+import { useJira } from "./JiraContex";
 
 function TaskList({ tasks, onUpdateTask, storyDescription, storyID }) {
   const [editIndex, setEditIndex] = useState(null); // Track which task is being edited
   const [editedTask, setEditedTask] = useState({ subtask: "", estimation: "" });
   const [responseData, setResponseData] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  const {jiraData} = useJira();
   // Start editing a task
   const handleEdit = (index) => {
     setEditIndex(index);
@@ -51,6 +51,9 @@ function TaskList({ tasks, onUpdateTask, storyDescription, storyID }) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          "username": `${jiraData.userId}`,
+          "api-token": `${jiraData.apiToken}`,
+          "jira-url": `${jiraData.jiraUrl}`,
         },
         body: JSON.stringify(requestBody),
       });
@@ -73,7 +76,7 @@ function TaskList({ tasks, onUpdateTask, storyDescription, storyID }) {
   };
 
   return ( 
-    <div className="task-list m-5 rounded-xl border-2 shadow-lg bg-teal-500">
+    <div className="task-list m-5 rounded-xl border-2 shadow-lg bg-teal-500 mb-10">
          <ScrollArea className="p-3 h-96 overflow-hidden">
       {tasks.map((task, index) => (
         <Card key={index} className="m-3 p-3 bg-gradient-to-l from-lime-400 to-[#59c277] opacity-95 shadow-lg">
