@@ -46,7 +46,7 @@ To run this application, ensure you have the following:
 3. **Run the application**:
 
    ```bash
-  npm run dev
+   npm run dev
    ```
 
 4. **Access the application in your browser**:
