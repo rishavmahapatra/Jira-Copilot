@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Jira Co-Pilot
+
+An intelligent web application designed to assist Agile teams by automating Agile workflows and reducing manual workload in estimating Jira stories using the story's summary and description using OpenAI ChatGPT. Additionally, it provides functionality to create and update subtasks directly on the Jira board, streamlining project management and enhancing productivity.
+
+## 🚀 Explore the App
+
+🌐 **Webapp Link:** [Click Here to Access the Jira Copilot](https://jira-copilot.vercel.app)
+
+## Features
+
+**Jira API Integration:** Authenticate using your Jira credentials and connect directly to your Jira projects.
+
+**Story-Based Automation**: Input a Jira story ID to automatically generate:
+- **Editable sub-tasks for the story.**
+- **Time estimates tailored for each sub-task.**
+
+**GenAI Story Estimation**: Estimate the effort required for Jira stories based on the summary and description automatically fetched based on story-id.
+
+**Editable Sub-Tasks:** Customize the AI-generated sub-tasks and estimates to fit your team’s needs.
+
+**Direct Jira Updates:** Push the generated or edited sub-tasks and estimates directly to Jira, ensuring seamless synchronization with your team’s workflow.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+To run this application, ensure you have the following:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+-Node.js (v14 or later)
+-A Jira account with API access and keys
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. **Clone the repository**:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+    git clone https://github.com/yourusername/Jira-Copilot.git
+    cd Jira-Copilot
+   ```
 
-## Learn More
+2. **Install dependencies**:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Run the application**:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+  npm run dev
+   ```
 
-## Deploy on Vercel
+4. **Access the application in your browser**:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   http://localhost:3000
+   ```
+## Usage
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Authenticate with Jira:**
+Enter your Jira credentials (URL, username, and API token) to connect the application to your project.
+
+2. **Input Story ID:**
+Provide the story ID for the task you want to break down.
+
+3. **Show Prompt:**
+Check the prompt which is used to generate sub-tasks and estimates leveraging Gen-AI.
+
+4. **Generate Sub-Tasks:**
+The application will automatically create sub-tasks and time estimates based on the story details.
+
+5. **Edit Tasks:**
+Review and customize the generated sub-tasks and time estimates as needed.
+
+6. **Save and Submit:**
+Submit the final tasks to reflect directly in the Jira board.
+
+## Technologies Used
+- **Frontend**: React.js, Next.js
+- **AI Model**: OpenAI ChatGPT
+- **Styling**: Tailwind CSS
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a pull request or open an issue to discuss any improvements or features.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
