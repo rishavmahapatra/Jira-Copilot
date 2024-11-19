@@ -2,6 +2,9 @@
 
 An intelligent web application designed to assist Agile teams by automating Agile workflows and reducing manual workload in estimating Jira stories using the story's summary and description using OpenAI ChatGPT. Additionally, it provides functionality to create and update subtasks directly on the Jira board, streamlining project management and enhancing productivity.
 
+![copilot-entry](https://github.com/user-attachments/assets/0a7ded69-def6-42c7-b89b-882692f79559)
+
+
 ## 🚀 Explore the App
 
 🌐 **Webapp Link:** [Click Here to Access the Jira Copilot](https://jira-copilot.vercel.app)
