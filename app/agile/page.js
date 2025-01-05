@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 export default function Home() {
   const [prompt, setPrompt] = useState('');
@@ -40,7 +41,7 @@ export default function Home() {
          <h1 className='font-bold text-4xl text-center'>My own GPT</h1>
       <form onSubmit={handleSubmit} className="flex items-center">
         {/* <label for='text'>Enter this or that statement</label> */}
-        <textarea 
+        <input 
         id='text'
           type="text" 
           value={prompt} 
@@ -52,8 +53,8 @@ export default function Home() {
           Generate
         </button>
       </form>
-      {loading && (<p className='font-bold animate-pulse text-center mx-auto'>Loading</p>)}
-      {response && (<p className='m-10 p-10 border-2  bg-gradient-to-l from-[#a8ff78] to-[#78ffd6] rounded-md'>{response}</p>)}
+      {loading && (<p className='font-bold animate-pulse text-2xl text-yellow-200 text-center mx-auto'>Loading</p>)}
+      {response && (<ReactMarkdown className='m-10 p-10 border-2  bg-gradient-to-l from-[#a8ff78] to-[#78ffd6] rounded-md'>{response}</ReactMarkdown>)}
     </div>
   );
 }
