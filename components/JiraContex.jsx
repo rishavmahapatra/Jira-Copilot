@@ -1,16 +1,29 @@
 'use client'
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 // Create the context
 const JiraContext = createContext();
 
 // Provider component to wrap the app
 export function JiraProvider({ children }) {
-  const [jiraData, setJiraData] = useState({
-    jiraUrl: "",
-    userId: "",
-    apiToken: ""
-  });
+  // Load initial state from localStorage (if available)
+  const loadStateFromLocalStorage = () => {
+    const savedState = localStorage.getItem('jiraData');
+    return savedState ? JSON.parse(savedState) : {
+      jiraUrl: "",
+      userId: "",
+      apiToken: ""
+    };
+  };
+
+  const [jiraData, setJiraData] = useState(loadStateFromLocalStorage);
+
+  // Save the state to localStorage whenever it changes
+  useEffect(() => {
+    if (jiraData) {
+      localStorage.setItem('jiraData', JSON.stringify(jiraData));
+    }
+  }, [jiraData]); // Only run this effect when `jiraData` changes
 
   return (
     <JiraContext.Provider value={{ jiraData, setJiraData }}>
