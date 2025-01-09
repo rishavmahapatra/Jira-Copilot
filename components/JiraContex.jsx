@@ -6,10 +6,20 @@ const JiraContext = createContext();
 
 // Provider component to wrap the app
 export function JiraProvider({ children }) {
-  // Load initial state from localStorage (if available)
+  // Check if window is defined (this ensures the code only runs on the client)
+  const isClient = typeof window !== "undefined";
+
+  // Load initial state from localStorage (if available and on client-side only)
   const loadStateFromLocalStorage = () => {
-    const savedState = localStorage.getItem('jiraData');
-    return savedState ? JSON.parse(savedState) : {
+    if (isClient) {
+      const savedState = localStorage.getItem('jiraData');
+      return savedState ? JSON.parse(savedState) : {
+        jiraUrl: "",
+        userId: "",
+        apiToken: ""
+      };
+    }
+    return {
       jiraUrl: "",
       userId: "",
       apiToken: ""
@@ -18,9 +28,9 @@ export function JiraProvider({ children }) {
 
   const [jiraData, setJiraData] = useState(loadStateFromLocalStorage);
 
-  // Save the state to localStorage whenever it changes
+  // Save the state to localStorage whenever it changes (only on client-side)
   useEffect(() => {
-    if (jiraData) {
+    if (isClient && jiraData) {
       localStorage.setItem('jiraData', JSON.stringify(jiraData));
     }
   }, [jiraData]); // Only run this effect when `jiraData` changes
